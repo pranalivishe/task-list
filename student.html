@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Assignment 1 - Student Output</title>
+</head>
+<body>
+
+    <h1>Student Details Output</h1>
+
+    <!-- The text will print directly inside this div container -->
+    <div id="student-container"></div>
+
+    <script>
+        // Student class demonstrating Encapsulation
+        class Student {
+            constructor() {
+                // Using underscore (_) to represent private variables
+                this._name = "";
+                this._age = 0;
+                this._marks = 0.0;
+            }
+
+            // Setter and Getter for Name
+            setName(name) {
+                this._name = name;
+            }
+            getName() {
+                return this._name;
+            }
+
+            // Setter and Getter for Age
+            setAge(age) {
+                if (age > 0) {
+                    this._age = age;
+                }
+            }
+            getAge() {
+                return this._age;
+            }
+
+            // Setter and Getter for Marks
+            setMarks(marks) {
+                this._marks = marks;
+            }
+            getMarks() {
+                return this._marks;
+            }
+
+            // Method matching the format of the car display details
+            displayDetails() {
+                return "<p><strong>--- Student Details ---</strong><br>" +
+                       "Name: " + this.getName() + "<br>" +
+                       "Age: " + this.getAge() + "<br>" +
+                       "Marks: " + this.getMarks() + "</p><br>";
+            }
+        }
+
+        // Creating a student object and setting values using setters
+        var student1 = new Student();
+        student1.setName("Alex Smith");
+        student1.setAge(20);
+        student1.setMarks(88.5);
+
+        // Find the div container on the page
+        var container = document.getElementById("student-container");
+
+        // Insert the student text block using innerHTML
+        container.innerHTML += student1.displayDetails();
+    </script>
+
+</body>
+</html>

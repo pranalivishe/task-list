@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Assignment 1 Output</title>
+</head>
+<body>
+
+    <h1>Car Details Output</h1>
+
+    <!-- The text will print directly inside this div container -->
+    <div id="output-container"></div>
+
+    <script>
+        // Car logic translated to JavaScript
+        class Car {
+            constructor(brand, model, priceUSD) {
+                this.brand = brand;
+                this.model = model;
+                // Convert USD to INR (1 USD = 85 INR)
+                this.priceINR = priceUSD * 85; 
+            }
+
+            // This method creates standard HTML paragraphs and line breaks
+            displayDetails(carNumber) {
+                // toLocaleString('en-IN') adds Indian style commas like 22,10,000
+                var formattedPrice = this.priceINR.toLocaleString('en-IN');
+
+                return "<p><strong>--- Car " + carNumber + " Details ---</strong><br>" +
+                       "Brand: " + this.brand + "<br>" +
+                       "Model: " + this.model + "<br>" +
+                       "Price: ₹" + formattedPrice + "</p><br>";
+            }
+        }
+
+        // Creating the 3 car objects (prices originally in USD)
+        var car1 = new Car("Toyota", "Camry", 26000);
+        var car2 = new Car("Honda", "Civic", 24000);
+        var car3 = new Car("Tesla", "Model 3", 42000);
+
+        // Find the div container on the page
+        var container = document.getElementById("output-container");
+
+        // Insert the paragraph blocks using innerHTML
+        container.innerHTML += car1.displayDetails(1);
+        container.innerHTML += car2.displayDetails(2);
+        container.innerHTML += car3.displayDetails(3);
+    </script>
+
+</body>
+</html>
